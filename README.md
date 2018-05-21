@@ -222,10 +222,10 @@ of them require manual changes to the default ELK configuration.
 
 Logspout is a log router for Docker containers that runs inside Docker. It attaches to all containers on a host, then routes their logs wherever you want. It also has an extensible module system.
 
-Add below configuration to your docker-stack.yml to enable logspout. Please note that we will use Logspout on all the servers to pass the logs to Logstash. 
+Add below configuration to your docker-stack.yml to enable logspout. Please note that Logspout is being used on all the servers to pass the logs to Logstash. 
 
 ```
-ogspout:
+logspout:
    image: gliderlabs/logspout:latest
    networks:
      - elk
@@ -239,7 +239,7 @@ ogspout:
    restart: on-failure
 ```
 
-We have added configuration inside environment section to ignore the logs of respective stack services i.e. Kibana, Logstash & ElasticSearch.
+The configuration is available inside environment section to ignore the logs of respective stack services i.e. Kibana, Logstash & ElasticSearch.
 
 ```
 environment:
@@ -295,10 +295,10 @@ logstash:
 
 * Update the docker-stack.yml accordingly if you need to add more services. Current docker-stack.yml is deployable on docker version 18.03 or above
 * Login to any master server and then checkout the repo
-* Validate if any service is running
+* Validate if any stack is running
 * Makes sure the name doesn’t conflict and deploy the docker-stack.yml with a unique name.
 
-Below command can be used to deploy the service named 'elk'.
+Below command can be used to deploy the stack named 'elk'.
 
 ```
 docker stack deploy elk -c docker-stack.yml
